@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>啊对对队·手语翻译</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #video-container {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>手语翻译</h1>
+  <input type="text" id="text-input" placeholder="请输入需要翻译的中文...">
+  <button onclick="playVideo()">发送</button>
+  
+  <div id="video-container">
+    <video id="video-player" controls autoplay style="width: 600px; height: 400px;">
+      <!-- 这里是默认的视频 -->
+      <source src="default.mp4" type="video/mp4">
+      您的浏览器不支持视频播放。
+    </video>
+  </div>
+
+  <script>
+    function playVideo() {
+      var textInput = document.getElementById("text-input").value;
+      var videoPlayer = document.getElementById("video-player");
+      var videoSource = document.createElement("source");
+      videoSource.setAttribute("type", "video/mp4");
+      switch (textInput) {
+        case "抱歉":
+          videoSource.setAttribute("src", "抱歉.mp4");
+          break;
+        case "不知道":
+          videoSource.setAttribute("src", "不知道.mp4");
+          break;
+        case "今天的故宫很漂亮":
+          videoSource.setAttribute("src", "今天的故宫很漂亮.mp4");
+          break;
+        default:
+          videoSource.setAttribute("src", "我在北京长大.mp4");
+      }
+      videoPlayer.innerHTML = "";
+      videoPlayer.appendChild(videoSource);
+      videoPlayer.load();
+      videoPlayer.play();
+    }
+  </script>
+</body>
+</html>
